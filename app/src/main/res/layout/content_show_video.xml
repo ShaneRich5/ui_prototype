@@ -8,6 +8,6 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_show_video"
-    tools:context="com.shane.demo.videos.ShowVideoActivity">
+    tools:context="com.shane.demo.activities.videos.ShowVideoActivity">
 
 </RelativeLayout>

@@ -1,4 +1,4 @@
-package com.shane.demo.articles;
+package com.shane.demo.activities.videos;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,12 +9,12 @@ import android.view.View;
 
 import com.shane.demo.R;
 
-public class ListArticleActivity extends AppCompatActivity {
+public class ListVideoActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_article);
+        setContentView(R.layout.activity_list_video);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

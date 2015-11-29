@@ -15,4 +15,21 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_show_video">ShowVideoActivity</string>
     <string name="title_activity_new_video">NewVideoActivity</string>
+    <string name="prompt_username">Username</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_confirm_password">Confirm</string>
+    <string name="action_sign_in">Sign In</string>
+    <string name="action_not_a_member">Not a member?</string>
+    <string name="action_guest">Guest</string>
+    <string name="action_register">Register</string>
+    <string name="action_is_a_member">Already a memeber?</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_recent">History</string>
+    <string name="nav_favourite">Favourite</string>
+    <string name="nav_help">Help</string>
+    <string name="nav_settings">Settings</string>
 </resources>

@@ -1,10 +1,13 @@
-package com.shane.demo;
+package com.shane.demo.activities.profile;
 
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
+
+import com.shane.demo.R;
+import com.shane.demo.activities.main.BaseActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

@@ -1,4 +1,4 @@
-package com.shane.demo;
+package com.shane.demo.activities.main;
 
 import android.support.v7.app.AppCompatActivity;
 
