@@ -16,7 +16,7 @@ public class ProfileActivity extends BaseActivity {
 
     @Bind(R.id.toolbar) Toolbar toolbar;
     @Bind(R.id.tab_layout) TabLayout tabs;
-    @Bind(R.id.backdrop) ImageView profileImage;
+    @Bind(R.id.backdrop) ImageView ivProfileImage;
     @Bind(R.id.collapsing_toolbar) CollapsingToolbarLayout collapsingToolbarLayout;
 
     @Override
@@ -26,11 +26,11 @@ public class ProfileActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
-        setupTablayout();
+        setupTabLayout();
 
     }
 
-    private void setupTablayout() {
+    private void setupTabLayout() {
         if (tabs == null)
             return;
 

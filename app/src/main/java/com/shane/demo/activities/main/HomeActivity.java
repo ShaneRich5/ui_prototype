@@ -1,5 +1,7 @@
 package com.shane.demo.activities.main;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
@@ -8,6 +10,7 @@ import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,8 +18,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.shane.demo.activities.profile.ProfileActivity;
 import com.shane.demo.R;
+import com.shane.demo.activities.profile.ProfileActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -77,8 +80,31 @@ public class HomeActivity extends BaseActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_home, menu);
+//        MenuItem searchItem = menu.findItem(R.id.action_search);
+//        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+//
+//        searchView.setOnQueryTextListener(
+//                new SearchView.OnQueryTextListener() {
+//                    @Override
+//                    public boolean onQueryTextSubmit(String query) {
+//                        return false;
+//                    }
+//
+//                    @Override
+//                    public boolean onQueryTextChange(String newText) {
+//                        return false;
+//                    }
+//                }
+//        );
+        // Associate searchable configuration with the SearchView
+        SearchManager searchManager =
+                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView =
+                (SearchView) menu.findItem(R.id.action_search).getActionView();
+        searchView.setSearchableInfo(
+                searchManager.getSearchableInfo(getComponentName()));
+
         return true;
     }
 
@@ -87,13 +113,18 @@ public class HomeActivity extends BaseActivity
 
         switch (item.getItemId()) {
             case R.id.action_settings:
+                Snackbar.make(coordinatorLayout, "Settings pressed", Snackbar.LENGTH_LONG).show();
+                break;
+            case R.id.action_filter:
+                Snackbar.make(coordinatorLayout, "Filter pressed", Snackbar.LENGTH_LONG).show();
+                break;
+            case R.id.action_search:
 
-                return true;
-            default:
-
-                return super.onOptionsItemSelected(item);
-
+                Snackbar.make(coordinatorLayout, "Search pressed", Snackbar.LENGTH_LONG).show();
+                break;
         }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
