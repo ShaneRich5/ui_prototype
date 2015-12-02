@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
@@ -16,10 +15,14 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.shane.demo.R;
+import com.shane.demo.activities.articles.NewArticleActivity;
+import com.shane.demo.activities.articles.ShowArticleActivity;
 import com.shane.demo.activities.profile.ProfileActivity;
+import com.shane.demo.activities.videos.NewVideoActivity;
+import com.shane.demo.activities.videos.ShowVideoActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -42,14 +45,6 @@ public class HomeActivity extends BaseActivity
         setSupportActionBar(toolbar);
 
         initializeDrawer();
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
     private void initializeDrawer() {
@@ -59,7 +54,7 @@ public class HomeActivity extends BaseActivity
         drawerLayout.setDrawerListener(toggle);
         toggle.syncState();
 
-        LinearLayout headerLayout = (LinearLayout) LayoutInflater.from(this).inflate(R.layout.nav_header, null);
+        RelativeLayout headerLayout = (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.nav_header, null);
 
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.inflateMenu(R.menu.menu_drawer);
@@ -76,11 +71,20 @@ public class HomeActivity extends BaseActivity
 
         settingsItem = navMenu.findItem(R.id.nav_settings);
         helpItem = navMenu.findItem(R.id.nav_help);
+
+        homeItem.setEnabled(false);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_home, menu);
+
+        SearchManager manager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+
+        SearchView search = (SearchView) menu.findItem(R.id.action_search).getActionView();
+
+        search.setSearchableInfo(manager.getSearchableInfo(getComponentName()));
+
 //        MenuItem searchItem = menu.findItem(R.id.action_search);
 //        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
 //
@@ -98,13 +102,6 @@ public class HomeActivity extends BaseActivity
 //                }
 //        );
         // Associate searchable configuration with the SearchView
-        SearchManager searchManager =
-                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        SearchView searchView =
-                (SearchView) menu.findItem(R.id.action_search).getActionView();
-        searchView.setSearchableInfo(
-                searchManager.getSearchableInfo(getComponentName()));
-
         return true;
     }
 
@@ -119,7 +116,6 @@ public class HomeActivity extends BaseActivity
                 Snackbar.make(coordinatorLayout, "Filter pressed", Snackbar.LENGTH_LONG).show();
                 break;
             case R.id.action_search:
-
                 Snackbar.make(coordinatorLayout, "Search pressed", Snackbar.LENGTH_LONG).show();
                 break;
         }
@@ -143,6 +139,14 @@ public class HomeActivity extends BaseActivity
             case R.id.nav_favourite:
                 Snackbar.make(coordinatorLayout, "Favourite pressed", Snackbar.LENGTH_LONG).show();
                 break;
+            case R.id.nav_new_article:
+                Snackbar.make(coordinatorLayout, "New Article pressed", Snackbar.LENGTH_LONG).show();
+                startActivity(new Intent(HomeActivity.this, NewArticleActivity.class));
+                break;
+            case R.id.nav_new_video:
+                Snackbar.make(coordinatorLayout, "New Video pressed", Snackbar.LENGTH_LONG).show();
+                startActivity(new Intent(HomeActivity.this, NewVideoActivity.class));
+                break;
             case R.id.nav_settings:
                 Snackbar.make(coordinatorLayout, "Settings pressed", Snackbar.LENGTH_LONG).show();
                 break;
@@ -152,5 +156,14 @@ public class HomeActivity extends BaseActivity
         }
 
         return true;
+    }
+
+
+    public void openArticle(View view) {
+        startActivity(new Intent(HomeActivity.this, ShowArticleActivity.class));
+    }
+
+    public void openVideo(View view) {
+        startActivity(new Intent(HomeActivity.this, ShowVideoActivity.class));
     }
 }

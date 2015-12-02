@@ -30,10 +30,9 @@ public class NewArticleActivity extends AppCompatActivity {
 
     }
 
-    @SuppressWarnings("ConstantConditions")
     private void setupToolbar() {
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
 

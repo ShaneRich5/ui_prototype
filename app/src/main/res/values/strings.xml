@@ -36,4 +36,7 @@
     <string name="action_filter">Filter</string>
     <string name="title_activity_search_result">SearchResultActivity</string>
     <string name="search_hint">Explore...</string>
+    <string name="action_logout">Logout</string>
+    <string name="cancel">Cancel</string>
+    <string name="action_favourite">Favourite</string>
 </resources>

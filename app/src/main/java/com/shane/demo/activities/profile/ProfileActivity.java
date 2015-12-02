@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 
 import com.shane.demo.R;
@@ -38,5 +40,22 @@ public class ProfileActivity extends BaseActivity {
         tabs.addTab(tabs.newTab().setText(""));
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_profile, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.action_favourite:
+
+                break;
+            case R.id.action_settings:
+
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
