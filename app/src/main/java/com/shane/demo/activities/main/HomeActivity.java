@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.SearchView;
@@ -81,27 +82,11 @@ public class HomeActivity extends BaseActivity
 
         SearchManager manager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
 
-        SearchView search = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        MenuItem item = menu.findItem(R.id.action_search);
+        SearchView search = (SearchView) MenuItemCompat.getActionView(item);
 
         search.setSearchableInfo(manager.getSearchableInfo(getComponentName()));
 
-//        MenuItem searchItem = menu.findItem(R.id.action_search);
-//        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-//
-//        searchView.setOnQueryTextListener(
-//                new SearchView.OnQueryTextListener() {
-//                    @Override
-//                    public boolean onQueryTextSubmit(String query) {
-//                        return false;
-//                    }
-//
-//                    @Override
-//                    public boolean onQueryTextChange(String newText) {
-//                        return false;
-//                    }
-//                }
-//        );
-        // Associate searchable configuration with the SearchView
         return true;
     }
 

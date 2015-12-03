@@ -12,19 +12,12 @@ public class ListVideoFragment extends Fragment {
 
     public ListVideoFragment() {
         // Required empty public constructor
+
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @return A new instance of fragment ListVideoFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static ListVideoFragment newInstance() {
         ListVideoFragment fragment = new ListVideoFragment();
         Bundle args = new Bundle();
-
         fragment.setArguments(args);
         return fragment;
     }

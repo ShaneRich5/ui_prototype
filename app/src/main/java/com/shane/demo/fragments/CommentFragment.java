@@ -10,13 +10,6 @@ import com.shane.demo.R;
 
 public class CommentFragment extends Fragment {
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @return A new instance of fragment CommentFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static CommentFragment newInstance() {
         CommentFragment fragment = new CommentFragment();
         Bundle args = new Bundle();

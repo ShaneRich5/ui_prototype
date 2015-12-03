@@ -39,6 +39,9 @@
             android:name=".activities.articles.ShowArticleActivity"
             android:label="@string/title_activity_show_article"
             android:theme="@style/AppTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.main.HomeActivity" />
         </activity>
         <activity
             android:name=".activities.articles.ListArticleActivity"

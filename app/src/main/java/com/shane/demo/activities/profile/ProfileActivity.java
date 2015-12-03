@@ -29,7 +29,6 @@ public class ProfileActivity extends BaseActivity {
 
         setSupportActionBar(toolbar);
         setupTabLayout();
-
     }
 
     private void setupTabLayout() {
@@ -50,6 +49,7 @@ public class ProfileActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
             case R.id.action_favourite:
+
 
                 break;
             case R.id.action_settings:
