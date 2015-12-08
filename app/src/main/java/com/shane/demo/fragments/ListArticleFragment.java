@@ -1,6 +1,7 @@
 package com.shane.demo.fragments;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,38 +18,39 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class ListVideoFragment extends Fragment {
+/**
+ * Created by shane on 12/7/15.
+ */
+public class ListArticleFragment extends Fragment {
 
-    @Bind(R.id.videos_list) RecyclerView rvVideos;
+    @Bind(R.id.articles_list) RecyclerView rvArticles;
 
-    VideoAdapter adapter;
+    ArticleAdapter adaper;
 
-    public ListVideoFragment() {
-        // Required empty public constructor
+    public ListArticleFragment() {
+
     }
 
-    public static ListVideoFragment newInstance() {
-        ListVideoFragment fragment = new ListVideoFragment();
+    public static ListArticleFragment newInstance() {
+        ListArticleFragment fragment = new ListArticleFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
     }
 
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_list_video, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_list_article, container, false);
         ButterKnife.bind(rootView);
         return rootView;
     }
 
-
-    public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoHolder> {
+    public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleHolder> {
 
         private final List<Article> articles;
 
-        public VideoHolder(List<Article> articles) {
+        public ArticleAdapter(List<Article> articles) {
             this.articles = articles;
         }
 
@@ -58,13 +60,13 @@ public class ListVideoFragment extends Fragment {
         }
 
         @Override
-        public VideoHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_comment, parent, false);
-            return new VideoHolder(view);
+        public ArticleHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_article, parent, false);
+            return new ArticleHolder(view);
         }
 
         @Override
-        public void onBindViewHolder(VideoHolder holder, int position) {
+        public void onBindViewHolder(ArticleHolder holder, int position) {
             Article article = articles.get(position);
 
             holder.content.setText(article.getTitle());
@@ -77,13 +79,13 @@ public class ListVideoFragment extends Fragment {
             return articles.size();
         }
 
-        public class VideoHolder extends RecyclerView.ViewHolder {
+        public class ArticleHolder extends RecyclerView.ViewHolder {
             CircleImageView profileImage;
             TextView timestamp;
             TextView content;
             TextView name;
 
-            public VideoHolder(View itemView) {
+            public ArticleHolder(View itemView) {
                 super(itemView);
 
                 profileImage = (CircleImageView) itemView.findViewById(R.id.profile_image);

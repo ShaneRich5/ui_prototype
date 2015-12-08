@@ -92,14 +92,16 @@ public class ProfileActivity extends BaseActivity {
         });
 
         tabs.setTabGravity(TabLayout.GRAVITY_FILL);
-        tabs.addTab(tabs.newTab().setText(""));
+//        tabs.addTab(tabs.newTab().setText(""));
     }
 
     private void setupViewPager() {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+
         adapter.addFragment(CommentFragment.newInstance(), "Wall");
         adapter.addFragment(InfoFragment.newInstance(), "Info");
         adapter.addFragment(ListVideoFragment.newInstance(), "Content");
+
         pager.setAdapter(adapter);
     }
 

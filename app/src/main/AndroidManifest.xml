@@ -44,16 +44,6 @@
                 android:value=".activities.main.HomeActivity" />
         </activity>
         <activity
-            android:name=".activities.articles.ListArticleActivity"
-            android:label="@string/title_activity_list_article"
-            android:theme="@style/AppTheme" >
-        </activity>
-        <activity
-            android:name=".activities.videos.ListVideoActivity"
-            android:label="@string/title_activity_list_video"
-            android:theme="@style/AppTheme" >
-        </activity>
-        <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme" >
