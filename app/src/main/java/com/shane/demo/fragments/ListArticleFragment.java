@@ -25,7 +25,7 @@ public class ListArticleFragment extends Fragment {
 
     @Bind(R.id.articles_list) RecyclerView rvArticles;
 
-    ArticleAdapter adaper;
+    ArticleAdapter adapter;
 
     public ListArticleFragment() {
 
@@ -43,7 +43,15 @@ public class ListArticleFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_list_article, container, false);
         ButterKnife.bind(rootView);
+
+        setupRecyclerView();
+
         return rootView;
+    }
+
+    private void setupRecyclerView() {
+        adapter = new ArticleAdapter(Article.getTestData());
+        rvArticles.setAdapter(adapter);
     }
 
     public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleHolder> {
@@ -69,7 +77,8 @@ public class ListArticleFragment extends Fragment {
         public void onBindViewHolder(ArticleHolder holder, int position) {
             Article article = articles.get(position);
 
-            holder.content.setText(article.getTitle());
+            holder.title.setText(article.getTitle());
+            holder.rating.setText(String.valueOf(article.getRating()) + "/10");
             holder.timestamp.setText(article.getTimestamp());
             holder.name.setText(article.getUser().getName());
         }
@@ -82,7 +91,8 @@ public class ListArticleFragment extends Fragment {
         public class ArticleHolder extends RecyclerView.ViewHolder {
             CircleImageView profileImage;
             TextView timestamp;
-            TextView content;
+            TextView rating;
+            TextView title;
             TextView name;
 
             public ArticleHolder(View itemView) {
@@ -90,7 +100,8 @@ public class ListArticleFragment extends Fragment {
 
                 profileImage = (CircleImageView) itemView.findViewById(R.id.profile_image);
                 timestamp = (TextView) itemView.findViewById(R.id.timestamp);
-                content = (TextView) itemView.findViewById(R.id.content);
+                rating = (TextView) itemView.findViewById(R.id.rating);
+                title = (TextView) itemView.findViewById(R.id.title);
                 name = (TextView) itemView.findViewById(R.id.name);
             }
         }

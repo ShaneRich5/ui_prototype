@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.shane.demo.R;
-import com.shane.demo.models.Article;
+import com.shane.demo.models.Video;
 
 import java.util.List;
 
@@ -40,46 +40,60 @@ public class ListVideoFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_list_video, container, false);
         ButterKnife.bind(rootView);
+
+        setupRecyclerView();
+
         return rootView;
+    }
+
+    private void setupRecyclerView() {
+        adapter = new VideoAdapter(Video.getTestData());
+        rvVideos.setAdapter(adapter);
     }
 
 
     public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoHolder> {
 
-        private final List<Article> articles;
+        private final List<Video> videos;
 
-        public VideoHolder(List<Article> articles) {
-            this.articles = articles;
+        public VideoAdapter(List<Video> videos) {
+            this.videos = videos;
         }
 
-        public void addArticle(Article newArticle) {
-            articles.add(newArticle);
+        public void addVideo(Video newVideo) {
+            videos.add(newVideo);
             notifyDataSetChanged();
         }
 
         @Override
         public VideoHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_comment, parent, false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_video, parent, false);
             return new VideoHolder(view);
         }
 
         @Override
         public void onBindViewHolder(VideoHolder holder, int position) {
-            Article article = articles.get(position);
+            Video video = videos.get(position);
 
-            holder.content.setText(article.getTitle());
-            holder.timestamp.setText(article.getTimestamp());
-            holder.name.setText(article.getUser().getName());
+            int duration = video.getDuration();
+            int minutes = duration / 60;
+            int seconds = duration % 60;
+
+            holder.content.setText(video.getTitle());
+            holder.duration.setText(minutes + ":" + seconds);
+            holder.timestamp.setText(video.getTimestamp());
+            holder.name.setText(video.getUser().getName());
         }
 
         @Override
         public int getItemCount() {
-            return articles.size();
+            return videos.size();
         }
 
         public class VideoHolder extends RecyclerView.ViewHolder {
             CircleImageView profileImage;
             TextView timestamp;
+            TextView duration;
             TextView content;
             TextView name;
 
@@ -88,6 +102,7 @@ public class ListVideoFragment extends Fragment {
 
                 profileImage = (CircleImageView) itemView.findViewById(R.id.profile_image);
                 timestamp = (TextView) itemView.findViewById(R.id.timestamp);
+                duration = (TextView) itemView.findViewById(R.id.duration);
                 content = (TextView) itemView.findViewById(R.id.content);
                 name = (TextView) itemView.findViewById(R.id.name);
             }
