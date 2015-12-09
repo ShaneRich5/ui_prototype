@@ -42,7 +42,7 @@ public class ListArticleFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_list_article, container, false);
-        ButterKnife.bind(rootView);
+        ButterKnife.bind(this, rootView);
 
         setupRecyclerView();
 

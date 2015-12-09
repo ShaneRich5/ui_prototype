@@ -39,7 +39,7 @@ public class ListVideoFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_list_video, container, false);
-        ButterKnife.bind(rootView);
+        ButterKnife.bind(this, rootView);
 
         setupRecyclerView();
 

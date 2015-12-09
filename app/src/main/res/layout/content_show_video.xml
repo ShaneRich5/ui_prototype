@@ -8,8 +8,9 @@
     tools:context="com.shane.demo.activities.videos.ShowVideoActivity">
 
     <FrameLayout
+        android:id="@+id/video_area"
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="400dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -72,6 +73,7 @@
     </FrameLayout>
 
     <android.support.design.widget.TabLayout
+
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -79,7 +81,7 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="fill_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 </android.support.design.widget.CoordinatorLayout>

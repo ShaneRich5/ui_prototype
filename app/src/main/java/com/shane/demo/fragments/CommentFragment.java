@@ -2,6 +2,7 @@ package com.shane.demo.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,7 +57,7 @@ public class CommentFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_comment, container, false);
-        ButterKnife.bind(view);
+        ButterKnife.bind(this, view);
 
         setupRecyclerView();
         setupOptionsContainer();
@@ -75,6 +76,11 @@ public class CommentFragment extends Fragment {
 
     private void setupRecyclerView() {
         adapter = new CommentAdapter(Comment.getTestData());
+
+        LinearLayoutManager layout = new LinearLayoutManager(getActivity());
+        layout.setOrientation(LinearLayoutManager.VERTICAL);
+
+        rvComments.setLayoutManager(layout);
         rvComments.setAdapter(adapter);
     }
 

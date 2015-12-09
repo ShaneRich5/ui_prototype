@@ -2,13 +2,12 @@ package com.shane.demo.activities.videos;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.shane.demo.R;
+import com.shane.demo.adapters.ViewPagerAdapter;
 import com.shane.demo.fragments.CommentFragment;
 import com.shane.demo.fragments.InfoFragment;
 import com.shane.demo.fragments.ListVideoFragment;
@@ -22,6 +21,8 @@ public class ShowVideoActivity extends AppCompatActivity {
     @Bind(R.id.tabs) TabLayout tabs;
     @Bind(R.id.pager) ViewPager pager;
 
+    ViewPagerAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,39 +31,11 @@ public class ShowVideoActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
 
-        FragmentPagerAdapter adapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
-            @Override
-            public Fragment getItem(int position) {
-                switch (position) {
-                    case 1:
-                        return CommentFragment.newInstance();
-                    case 2:
-                        return InfoFragment.newInstance();
-                    case 3:
-                        return ListVideoFragment.newInstance();
-                }
-                return null;
-            }
+        adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
-            @Override
-            public int getCount() {
-                return 3;
-            }
-
-            @Override
-            public CharSequence getPageTitle(int position) {
-                switch (position) {
-                    case 1:
-                        return "Comments";
-                    case 2:
-                        return "Information";
-                    case 3:
-                        return "Related";
-                }
-
-                return super.getPageTitle(position);
-            }
-        };
+        adapter.addFragment(CommentFragment.newInstance(), "Comments");
+        adapter.addFragment(InfoFragment.newInstance(), "Info");
+        adapter.addFragment(ListVideoFragment.newInstance(), "Related");
 
         pager.setAdapter(adapter);
         tabs.setupWithViewPager(pager);
